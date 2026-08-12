@@ -518,7 +518,8 @@ a:focus {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  display: block;
+  display: grid;
+  place-items: center;
   padding: 26px 54px;
   background: rgba(8, 13, 26, 0.62);
   overflow-y: auto;
@@ -531,27 +532,30 @@ a:focus {
 
 .footprint-photo-viewer {
   display: grid;
-  grid-template-rows: auto auto;
+  grid-template-rows: minmax(0, 1fr) auto;
   width: min(1120px, 100%);
-  margin: 0 auto;
+  max-height: calc(100vh - 52px);
+  margin: 0;
   background: #050a1a;
   box-shadow: 0 18px 52px rgba(0, 0, 0, 0.32);
-  overflow: visible;
+  overflow: hidden;
 }
 
 .footprint-photo-stage {
   position: relative;
   display: grid;
   place-items: center;
-  min-height: 160px;
+  min-height: 0;
   background: #020617;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .footprint-photo-stage img {
   display: block;
-  width: 100%;
+  width: auto;
   height: auto;
+  max-width: 100%;
+  max-height: calc(100vh - 170px);
   object-fit: contain;
 }
 
@@ -742,10 +746,15 @@ a:focus {
 
   .footprint-photo-viewer {
     width: 100%;
+    max-height: calc(100vh - 36px);
   }
 
   .footprint-photo-stage {
-    min-height: 140px;
+    min-height: 0;
+  }
+
+  .footprint-photo-stage img {
+    max-height: calc(100vh - 190px);
   }
 
   .footprint-photo-caption {
