@@ -1,14 +1,14 @@
 summary:
   countries: 1
-  places: 6
+  places: 8
 
 regions:
   - name: "亚洲"
     color: "#2563eb"
-    places_count: 6
+    places_count: 8
     countries:
       - name: "中国"
-        meta: "6 城市 / 地点"
+        meta: "8 城市 / 地点"
         places:
           - name: "三亚"
             lat: 18.2528
@@ -34,3 +34,11 @@ regions:
             lat: 30.2741
             lng: 120.1551
             note: "浙江"
+          - name: "桂林"
+            lat: 25.2736
+            lng: 110.2900
+            note: "广西"
+          - name: "南宁"
+            lat: 22.8170
+            lng: 108.3669
+            note: "广西"
