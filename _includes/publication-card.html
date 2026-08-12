@@ -1,0 +1,16 @@
+{% assign pub = include.publication %}
+<article class="publication">
+  {% if pub.image %}
+    <img src="{{ pub.image | relative_url }}" alt="Thumbnail for {{ pub.title }}" />
+  {% endif %}
+  <div>
+    <h3>{{ pub.title }}</h3>
+    <p class="authors">{{ pub.authors }}</p>
+    <p class="venue">{{ pub.venue }}, {{ pub.year }}</p>
+    <p class="pub-links">
+      {% if pub.paper %}<a href="{{ pub.paper }}">Paper</a>{% endif %}
+      {% if pub.code %}<a href="{{ pub.code }}">Code</a>{% endif %}
+      {% if pub.project %}<a href="{{ pub.project }}">Project</a>{% endif %}
+    </p>
+  </div>
+</article>

@@ -1,0 +1,39 @@
+title: "Your Name"
+description: "Personal academic homepage"
+url: "https://izhe666.github.io"
+baseurl: ""
+
+markdown: kramdown
+highlighter: rouge
+
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+  publications:
+    output: true
+    permalink: /publications/:name/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+  - scope:
+      path: ""
+      type: publications
+    values:
+      layout: publication
+
+plugins:
+  - jekyll-feed
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
