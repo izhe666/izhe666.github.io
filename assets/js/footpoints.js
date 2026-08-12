@@ -92,6 +92,7 @@
     });
 
     var initialBounds = getBounds(features);
+    var photoModal = createPhotoModal(features);
 
     map.on("load", function () {
       map.addSource(POINT_SOURCE_ID, {
@@ -143,9 +144,10 @@
       });
 
       fitToBounds(map, initialBounds, 0);
-      bindMarkerPopup(map);
+      bindMarkerPopup(map, photoModal);
       bindMapControls(map, mapEl, features, initialBounds);
       bindCountryCards(map, features);
+      bindPlaceCards(map, features, photoModal);
       mapEl.classList.add("is-ready");
     });
 
@@ -171,6 +173,8 @@
             properties: {
               name: place.name,
               note: place.note || "",
+              caption: place.caption || "",
+              photo: place.photo || "",
               country: country.name,
               region: region.name,
               color: region.color
@@ -201,7 +205,7 @@
     });
   }
 
-  function bindMarkerPopup(map) {
+  function bindMarkerPopup(map, photoModal) {
     var popup = new maplibregl.Popup({
       closeButton: false,
       closeOnClick: true,
@@ -220,6 +224,11 @@
       var feature = event.features && event.features[0];
 
       if (!feature) {
+        return;
+      }
+
+      if (photoModal) {
+        photoModal.open(feature.properties.name);
         return;
       }
 
@@ -285,6 +294,35 @@
     });
   }
 
+  function bindPlaceCards(map, features, photoModal) {
+    var cards = document.querySelectorAll("[data-place-name]");
+
+    cards.forEach(function (card) {
+      card.addEventListener("click", function () {
+        var placeName = card.getAttribute("data-place-name");
+        var feature = features.find(function (item) {
+          return item.properties.name === placeName;
+        });
+
+        if (!feature) {
+          return;
+        }
+
+        map.flyTo({
+          center: feature.geometry.coordinates,
+          zoom: Math.max(map.getZoom(), 5),
+          duration: 450
+        });
+
+        setActivePlace(placeName);
+
+        if (photoModal) {
+          photoModal.open(placeName);
+        }
+      });
+    });
+  }
+
   function setActiveCountry(country) {
     document.querySelectorAll("[data-country-name]").forEach(function (card) {
       card.classList.toggle(
@@ -292,6 +330,126 @@
         card.getAttribute("data-country-name") === country
       );
     });
+  }
+
+  function setActivePlace(placeName) {
+    document.querySelectorAll("[data-place-name]").forEach(function (card) {
+      card.classList.toggle(
+        "is-active",
+        card.getAttribute("data-place-name") === placeName
+      );
+    });
+  }
+
+  function createPhotoModal(features) {
+    var modal = document.querySelector("[data-photo-modal]");
+
+    if (!modal) {
+      return null;
+    }
+
+    var image = modal.querySelector("[data-photo-image]");
+    var placeholder = modal.querySelector("[data-photo-placeholder]");
+    var placeholderCity = modal.querySelector("[data-photo-placeholder-city]");
+    var placeholderPath = modal.querySelector("[data-photo-placeholder-path]");
+    var title = modal.querySelector("[data-photo-title]");
+    var caption = modal.querySelector("[data-photo-caption]");
+    var note = modal.querySelector("[data-photo-note]");
+    var country = modal.querySelector("[data-photo-country]");
+    var count = modal.querySelector("[data-photo-count]");
+    var closeButton = modal.querySelector("[data-photo-close]");
+    var prevButton = modal.querySelector("[data-photo-prev]");
+    var nextButton = modal.querySelector("[data-photo-next]");
+    var activeIndex = 0;
+
+    function show(index) {
+      var feature = features[index];
+
+      if (!feature) {
+        return;
+      }
+
+      activeIndex = index;
+      setActivePlace(feature.properties.name);
+
+      title.textContent = feature.properties.name;
+      caption.textContent = feature.properties.caption || "";
+      note.textContent = feature.properties.note || "";
+      country.textContent = feature.properties.country;
+      count.textContent = activeIndex + 1 + " / " + features.length;
+
+      image.alt = feature.properties.name + " travel photo";
+      image.hidden = false;
+      placeholder.hidden = true;
+      placeholderCity.textContent = "";
+      placeholderPath.textContent = "";
+
+      image.onerror = function () {
+        image.hidden = true;
+        placeholder.hidden = false;
+        placeholderCity.textContent = feature.properties.name;
+        placeholderPath.textContent = feature.properties.photo || "Photo path is empty.";
+      };
+
+      image.src = feature.properties.photo || "";
+
+      if (!feature.properties.photo) {
+        image.onerror();
+      }
+    }
+
+    function open(placeName) {
+      var index = features.findIndex(function (feature) {
+        return feature.properties.name === placeName;
+      });
+
+      show(index === -1 ? 0 : index);
+      modal.hidden = false;
+      document.body.classList.add("is-photo-modal-open");
+      closeButton.focus();
+    }
+
+    function close() {
+      modal.hidden = true;
+      document.body.classList.remove("is-photo-modal-open");
+      setActivePlace("");
+    }
+
+    function showPrevious() {
+      show((activeIndex - 1 + features.length) % features.length);
+    }
+
+    function showNext() {
+      show((activeIndex + 1) % features.length);
+    }
+
+    closeButton.addEventListener("click", close);
+    prevButton.addEventListener("click", showPrevious);
+    nextButton.addEventListener("click", showNext);
+
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        close();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (modal.hidden) {
+        return;
+      }
+
+      if (event.key === "Escape") {
+        close();
+      } else if (event.key === "ArrowLeft") {
+        showPrevious();
+      } else if (event.key === "ArrowRight") {
+        showNext();
+      }
+    });
+
+    return {
+      open: open
+    };
   }
 
   function toggleFullscreen(shell, map) {

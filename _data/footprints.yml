@@ -14,31 +14,47 @@ regions:
             lat: 18.2528
             lng: 109.5119
             note: "海南"
+            caption: "海风、椰影和南方的蓝色假期。"
+            photo: "/assets/images/footprints/sanya.jpg"
           - name: "厦门"
             lat: 24.4798
             lng: 118.0894
             note: "福建"
+            caption: "海岸线、校园和慢下来的城市节奏。"
+            photo: "/assets/images/footprints/xiamen.jpg"
           - name: "上海"
             lat: 31.2304
             lng: 121.4737
             note: "上海"
+            caption: "高楼、江风和夜色里的城市轮廓。"
+            photo: "/assets/images/footprints/shanghai.jpg"
           - name: "成都"
             lat: 30.5728
             lng: 104.0668
             note: "四川"
+            caption: "烟火气、街巷和悠闲的生活感。"
+            photo: "/assets/images/footprints/chengdu.jpg"
           - name: "重庆"
             lat: 29.5630
             lng: 106.5516
             note: "重庆"
+            caption: "山城、江岸和层层叠叠的灯火。"
+            photo: "/assets/images/footprints/chongqing.jpg"
           - name: "杭州"
             lat: 30.2741
             lng: 120.1551
             note: "浙江"
+            caption: "湖光、树影和温柔的江南气息。"
+            photo: "/assets/images/footprints/hangzhou.jpg"
           - name: "桂林"
             lat: 25.2736
             lng: 110.2900
             note: "广西"
+            caption: "山水之间，一眼就是画。"
+            photo: "/assets/images/footprints/guilin.jpg"
           - name: "南宁"
             lat: 22.8170
             lng: 108.3669
             note: "广西"
+            caption: "绿城的街道、阳光和南方空气。"
+            photo: "/assets/images/footprints/nanning.jpg"

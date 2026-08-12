@@ -53,16 +53,57 @@
         </div>
         <div class="footprint-country-grid">
           {% for country in region.countries %}
-            <button class="footprint-country" type="button" data-country-name="{{ country.name }}">
-              <strong>{{ country.name }}</strong>
-              <span>{{ country.meta }}</span>
-            </button>
+            <article class="footprint-country">
+              <button class="footprint-country-main" type="button" data-country-name="{{ country.name | escape }}">
+                <strong>{{ country.name }}</strong>
+                <span>{{ country.meta }}</span>
+              </button>
+              <div class="footprint-place-list" aria-label="{{ country.name }} places">
+                {% for place in country.places %}
+                  <button class="footprint-place" type="button" data-place-name="{{ place.name | escape }}">
+                    {{ place.name }}
+                  </button>
+                {% endfor %}
+              </div>
+            </article>
           {% endfor %}
         </div>
       </section>
     {% endfor %}
   </div>
 </section>
+
+<div class="footprint-photo-modal" data-photo-modal hidden role="dialog" aria-modal="true" aria-labelledby="footprint-photo-title">
+  <button class="footprint-photo-close" type="button" data-photo-close aria-label="Close photo">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+  </button>
+  <button class="footprint-photo-nav footprint-photo-prev" type="button" data-photo-prev aria-label="Previous city">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
+  </button>
+  <button class="footprint-photo-nav footprint-photo-next" type="button" data-photo-next aria-label="Next city">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+  </button>
+  <figure class="footprint-photo-viewer">
+    <div class="footprint-photo-stage">
+      <img data-photo-image alt="" />
+      <div class="footprint-photo-placeholder" data-photo-placeholder hidden>
+        <strong data-photo-placeholder-city></strong>
+        <span data-photo-placeholder-path></span>
+      </div>
+    </div>
+    <figcaption class="footprint-photo-caption">
+      <div>
+        <h3 id="footprint-photo-title" data-photo-title></h3>
+        <p data-photo-caption></p>
+        <p data-photo-note></p>
+      </div>
+      <div class="footprint-photo-meta">
+        <strong data-photo-country></strong>
+        <span data-photo-count></span>
+      </div>
+    </figcaption>
+  </figure>
+</div>
 
 <script type="application/json" id="footprint-data">
   {{ footprints.regions | jsonify }}
