@@ -1,0 +1,90 @@
+summary:
+  countries: 5
+  places: 12
+
+regions:
+  - name: "Asia"
+    color: "#2563eb"
+    places_count: 7
+    countries:
+      - name: "China"
+        meta: "4 cities / places"
+        places:
+          - name: "Xiamen"
+            lat: 24.4798
+            lng: 118.0894
+            note: "Xiamen University"
+          - name: "Fuzhou"
+            lat: 26.0745
+            lng: 119.2965
+            note: "Fujian"
+          - name: "Shanghai"
+            lat: 31.2304
+            lng: 121.4737
+            note: "China"
+          - name: "Beijing"
+            lat: 39.9042
+            lng: 116.4074
+            note: "China"
+      - name: "Japan"
+        meta: "3 cities / places"
+        places:
+          - name: "Tokyo"
+            lat: 35.6762
+            lng: 139.6503
+            note: "Japan"
+          - name: "Kyoto"
+            lat: 35.0116
+            lng: 135.7681
+            note: "Japan"
+          - name: "Osaka"
+            lat: 34.6937
+            lng: 135.5023
+            note: "Japan"
+
+  - name: "North America"
+    color: "#16a34a"
+    places_count: 2
+    countries:
+      - name: "United States"
+        meta: "2 cities / places"
+        places:
+          - name: "New York"
+            lat: 40.7128
+            lng: -74.0060
+            note: "United States"
+          - name: "San Francisco"
+            lat: 37.7749
+            lng: -122.4194
+            note: "United States"
+
+  - name: "Europe"
+    color: "#f97316"
+    places_count: 2
+    countries:
+      - name: "France"
+        meta: "1 city / place"
+        places:
+          - name: "Paris"
+            lat: 48.8566
+            lng: 2.3522
+            note: "France"
+      - name: "Italy"
+        meta: "1 city / place"
+        places:
+          - name: "Rome"
+            lat: 41.9028
+            lng: 12.4964
+            note: "Italy"
+
+  - name: "Oceania"
+    color: "#7c3aed"
+    places_count: 1
+    countries:
+      - name: "Australia"
+        meta: "1 city / place"
+        places:
+          - name: "Sydney"
+            lat: -33.8688
+            lng: 151.2093
+            note: "Australia"

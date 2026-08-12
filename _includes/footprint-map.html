@@ -1,0 +1,47 @@
+{% assign footprints = site.data.footprints %}
+<section class="footprints" aria-labelledby="footprints-title">
+  <div class="footprint-header">
+    <div>
+      <h2 id="footprints-title">✨ Footprints</h2>
+      <p class="footprint-subtitle">Read ten thousand books, travel ten thousand miles.</p>
+    </div>
+    <div class="footprint-stats" aria-label="Travel summary">
+      <div class="footprint-stat">
+        <span>Countries</span>
+        <strong>{{ footprints.summary.countries }}</strong>
+      </div>
+      <div class="footprint-stat">
+        <span>Cities / Places</span>
+        <strong>{{ footprints.summary.places }}</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="footprint-map" data-footprint-map>
+    <p class="footprint-map-status">Loading map...</p>
+  </div>
+  <p class="footprint-hint">Click a marker to see the city and note.</p>
+
+  <div class="footprint-regions">
+    {% for region in footprints.regions %}
+      <section class="footprint-region" style="--region-color: {{ region.color }}">
+        <div class="footprint-region-title">
+          <h3>{{ region.name }}</h3>
+          <span>{{ region.places_count }}</span>
+        </div>
+        <div class="footprint-country-grid">
+          {% for country in region.countries %}
+            <article class="footprint-country">
+              <strong>{{ country.name }}</strong>
+              <span>{{ country.meta }}</span>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+    {% endfor %}
+  </div>
+</section>
+
+<script type="application/json" id="footprint-data">
+  {{ footprints.regions | jsonify }}
+</script>
