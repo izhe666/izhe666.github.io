@@ -9,11 +9,6 @@ I am a student / researcher at **Xiamen University**. My research interests incl
 I received my degree from **Your Previous University**. I am broadly interested
 in building reliable intelligent systems and publishing reproducible research.
 
-## Recruiting
-
-I am recruiting self-motivated students. Please email me your CV, transcript,
-and a short description of your research interests. Undergraduate interns and
-visiting students are also welcome.
 
 ## News
 
