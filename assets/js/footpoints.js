@@ -406,7 +406,8 @@
       show(index === -1 ? 0 : index);
       modal.hidden = false;
       document.body.classList.add("is-photo-modal-open");
-      closeButton.focus();
+      modal.scrollTop = 0;
+      modal.focus();
     }
 
     function close() {

@@ -519,9 +519,11 @@ a:focus {
   inset: 0;
   z-index: 1000;
   display: grid;
-  place-items: center;
+  place-items: start center;
   padding: 26px 54px;
   background: rgba(8, 13, 26, 0.62);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .footprint-photo-modal[hidden] {
@@ -533,7 +535,7 @@ a:focus {
   grid-template-rows: minmax(0, 1fr) auto;
   width: min(1120px, 100%);
   max-height: min(860px, calc(100vh - 52px));
-  margin: 0;
+  margin: auto 0;
   background: #050a1a;
   box-shadow: 0 18px 52px rgba(0, 0, 0, 0.32);
   overflow: auto;
