@@ -27,7 +27,7 @@ regions:
             lng: 121.4737
             note: "上海"
             caption: "高楼、江风和夜色里的城市轮廓。"
-            photo: "/assets/images/footprints/shanghai.jpg"
+            photo: "/assets/images/footprints/shanghai.png"
           - name: "成都"
             lat: 30.5728
             lng: 104.0668
@@ -45,7 +45,7 @@ regions:
             lng: 120.1551
             note: "浙江"
             caption: "湖光、树影和温柔的江南气息。"
-            photo: "/assets/images/footprints/hangzhou.jpg"
+            photo: "/assets/images/footprints/hangzhou.png"
           - name: "桂林"
             lat: 25.2736
             lng: 110.2900
