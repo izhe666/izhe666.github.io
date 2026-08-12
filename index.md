@@ -1,7 +1,7 @@
 ---
 layout: home
 title: Home
-leaflet_map: true
+footprint_map: true
 ---
 
 I am a student / researcher at **Xiamen University**. My research interests include

@@ -8,12 +8,10 @@
       {% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}
     </title>
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
-    {% if page.leaflet_map %}
+    {% if page.footprint_map %}
       <link
         rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIINfQnE8xwH7UGU6BC6BC/utFGFGjC0="
-        crossorigin=""
+        href="https://cdn.jsdelivr.net/npm/maplibre-gl@3.6.2/dist/maplibre-gl.css"
       />
     {% endif %}
   </head>
@@ -24,11 +22,9 @@
         {{ content }}
       </section>
     </main>
-    {% if page.leaflet_map %}
+    {% if page.footprint_map %}
       <script
-        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossorigin=""
+        src="https://cdn.jsdelivr.net/npm/maplibre-gl@3.6.2/dist/maplibre-gl.js"
         defer
       ></script>
       <script src="{{ '/assets/js/footpoints.js' | relative_url }}" defer></script>

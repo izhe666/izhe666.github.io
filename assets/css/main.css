@@ -283,12 +283,19 @@ a:focus {
   line-height: 1;
 }
 
+.footprint-map-shell {
+  position: relative;
+  width: 100%;
+  border: 1px solid #d7dee6;
+  background: #d8edf2;
+  overflow: hidden;
+}
+
 .footprint-map {
   position: relative;
   width: 100%;
-  height: 360px;
-  border: 1px solid #d7dee6;
-  background: #d9edf3;
+  height: 380px;
+  background: #d8edf2;
 }
 
 .footprint-map-status {
@@ -298,6 +305,91 @@ a:focus {
   place-items: center;
   margin: 0;
   color: var(--muted);
+  z-index: 1;
+}
+
+.footprint-map.is-ready .footprint-map-status {
+  display: none;
+}
+
+.footprint-map-controls {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  display: flex;
+  overflow: hidden;
+  border: 1px solid rgba(215, 222, 230, 0.9);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 2px 8px rgba(20, 30, 40, 0.14);
+}
+
+.footprint-map-controls button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  border: 0;
+  border-left: 1px solid #e4e9ef;
+  color: #475569;
+  background: transparent;
+  cursor: pointer;
+}
+
+.footprint-map-controls button:first-child {
+  border-left: 0;
+}
+
+.footprint-map-controls button:hover,
+.footprint-map-controls button:focus {
+  color: var(--link);
+  background: #eef7fb;
+}
+
+.footprint-map-controls svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.footprint-map-shell:fullscreen {
+  background: #d8edf2;
+}
+
+.footprint-map-shell:fullscreen .footprint-map {
+  height: 100vh;
+}
+
+.footprint-popup strong {
+  display: block;
+  margin-bottom: 2px;
+  color: #172033;
+}
+
+.footprint-popup span {
+  display: block;
+  color: #64748b;
+  font-size: 0.78rem;
+}
+
+.footprint-popup p {
+  margin: 5px 0 0;
+  color: #334155;
+}
+
+.maplibregl-popup-content {
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(20, 30, 40, 0.18);
+}
+
+.maplibregl-ctrl-attrib {
+  font-size: 0.68rem;
 }
 
 .footprint-hint {
@@ -339,10 +431,27 @@ a:focus {
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  width: 100%;
   border: 1px solid #dbe2ea;
   border-top: 3px solid var(--region-color);
   padding: 9px 12px;
   background: #fff;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.footprint-country:hover,
+.footprint-country:focus {
+  border-color: #b8c8d8;
+  background: #f6fbfd;
+}
+
+.footprint-country.is-active {
+  background: #eef7fb;
+  outline: 2px solid rgba(15, 95, 147, 0.22);
+  outline-offset: 1px;
 }
 
 .footprint-country strong {
@@ -425,5 +534,15 @@ a:focus {
 
   .footprint-map {
     height: 300px;
+  }
+
+  .footprint-map-controls {
+    top: 10px;
+    right: 10px;
+  }
+
+  .footprint-map-controls button {
+    width: 31px;
+    height: 31px;
   }
 }
