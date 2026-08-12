@@ -29,5 +29,5 @@ full publication list.
 
 :basketball: Basketball,  :video_game: LOL,   cycling, hiking.
 
-## :triangular_flag_on_post: 足迹
+
 {% include footprint-map.html %}
