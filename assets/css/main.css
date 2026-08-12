@@ -34,6 +34,13 @@ a:focus {
   text-decoration: underline;
 }
 
+.emoji {
+  width: 1.1em;
+  height: 1.1em;
+  margin: 0 0.08em;
+  vertical-align: -0.16em;
+}
+
 .site-shell {
   width: min(980px, calc(100% - 32px));
   min-height: 100vh;
@@ -136,11 +143,12 @@ a:focus {
 }
 
 .content h2::before {
-  content: "";
-  width: 9px;
-  height: 9px;
-  border-radius: 2px;
-  background: linear-gradient(135deg, var(--accent-2), #77b7c9);
+  content: none;
+}
+
+.content h2 .emoji {
+  width: 1.18em;
+  height: 1.18em;
 }
 
 #recruiting {
