@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 382" role="img" aria-labelledby="title">
+  <title id="title">Multimodal research thumbnail</title>
+  <rect width="640" height="382" fill="#f8fbfc"/>
+  <rect x="42" y="42" width="170" height="112" rx="8" fill="#e0eef3" stroke="#9eb9c7"/>
+  <rect x="428" y="42" width="170" height="112" rx="8" fill="#f2e7e3" stroke="#caaea4"/>
+  <rect x="235" y="228" width="170" height="112" rx="8" fill="#ecebdc" stroke="#c9c4a6"/>
+  <circle cx="127" cy="98" r="32" fill="#176b87"/>
+  <path d="M462 124l40-52 48 52" fill="none" stroke="#b42318" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M274 298h92M274 270h58" stroke="#7a5c00" stroke-width="12" stroke-linecap="round"/>
+  <path d="M212 98h216M320 154v74" stroke="#aab8c4" stroke-width="9" stroke-linecap="round" stroke-dasharray="18 14"/>
+  <circle cx="320" cy="98" r="22" fill="#2e3b48"/>
+  <circle cx="320" cy="228" r="22" fill="#2e3b48"/>
+</svg>

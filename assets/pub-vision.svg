@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 382" role="img" aria-labelledby="title">
+  <title id="title">Vision research thumbnail</title>
+  <rect width="640" height="382" fill="#f7fafc"/>
+  <rect x="24" y="24" width="178" height="140" rx="6" fill="#dce8ef" stroke="#b9c9d5"/>
+  <rect x="232" y="24" width="178" height="140" rx="6" fill="#eaf0dc" stroke="#cbd6b2"/>
+  <rect x="438" y="24" width="178" height="140" rx="6" fill="#f3e5df" stroke="#d6beb3"/>
+  <circle cx="113" cy="94" r="42" fill="#176b87" opacity=".84"/>
+  <path d="M260 126c37-74 83-74 121 0" fill="none" stroke="#7a5c00" stroke-width="14" stroke-linecap="round"/>
+  <path d="M474 108l36-42 36 70 28-35" fill="none" stroke="#b42318" stroke-width="13" stroke-linejoin="round"/>
+  <path d="M62 248h516" stroke="#c8d1da" stroke-width="10" stroke-linecap="round"/>
+  <path d="M62 292h380" stroke="#d4dce4" stroke-width="10" stroke-linecap="round"/>
+  <path d="M62 336h462" stroke="#d4dce4" stroke-width="10" stroke-linecap="round"/>
+</svg>
