@@ -18,6 +18,8 @@ regions:
             media:
               - type: "image"
                 src: "/assets/images/footprints/sanya.jpg"
+              - type: "image"
+                src: "/assets/images/footprints/sanya2.jpg"
           - name: "厦门"
             lat: 24.4798
             lng: 118.0894
@@ -78,10 +80,10 @@ regions:
             lat: 22.8170
             lng: 108.3669
             note: "广西"
-            caption: "绿城的街道、阳光和南方空气。"
+            caption: "2026年毕业西大合照"
             media:
               - type: "image"
-                src: "/assets/images/footprints/nanning.jpg"
+                src: "/assets/images/footprints/nanning.png"
           - name: "深圳"
             lat: 22.5431
             lng: 114.0579
