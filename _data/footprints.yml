@@ -45,7 +45,7 @@ regions:
             lng: 112.9388
             note: "湖南"
             caption: "湘江、橘子洲和热烈的城市烟火。"
-            photo: "/assets/images/footprints/changsha.jpg"
+            photo: "/assets/images/footprints/changsha.png"
           - name: "杭州"
             lat: 30.2741
             lng: 120.1551
