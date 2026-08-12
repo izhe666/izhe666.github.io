@@ -10,7 +10,7 @@ I received my degree from **Your Previous University**. I am broadly interested
 in building reliable intelligent systems and publishing reproducible research.
 
 
-## News
+## ✍News
 
 - **[Sep 2026]** I am going to the Xiamen University.
 
@@ -24,13 +24,7 @@ in building reliable intelligent systems and publishing reproducible research.
 Please visit my [Google Scholar profile](https://scholar.google.com/) for the
 full publication list.
 
-## Academic Services
+## ✨Hobby
 
-**Conference Reviewer:** CVPR, ICCV, ECCV, NeurIPS, ICLR, AAAI, ACM MM.
+:basketball: Basketball,  :video_game: LOL,   cycling, hiking.
 
-**Journal Reviewer:** IEEE Transactions on Pattern Analysis and Machine
-Intelligence, International Journal of Computer Vision.
-
-## Hobby
-
-Basketball, reading, cycling, hiking.
