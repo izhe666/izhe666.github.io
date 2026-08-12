@@ -19,7 +19,10 @@
         window.addEventListener("load", function () {
           if (typeof L !== "undefined") {
             initMap(mapEl, dataEl);
+            return;
           }
+
+          setStatus(mapEl, "Map library failed to load.");
         });
         return;
       }
@@ -28,7 +31,15 @@
     });
   
     function initMap(mapEl, dataEl) {
-      var regions = JSON.parse(dataEl.textContent);
+      var regions;
+
+      try {
+        regions = JSON.parse(dataEl.textContent);
+      } catch (error) {
+        setStatus(mapEl, "Map data could not be read.");
+        return;
+      }
+
       var map = L.map(mapEl, {
         scrollWheelZoom: false,
         worldCopyJump: true
@@ -65,6 +76,14 @@
   
       if (bounds.length > 1) {
         map.fitBounds(bounds, { padding: [28, 28], maxZoom: 4 });
+      }
+    }
+
+    function setStatus(mapEl, message) {
+      var statusEl = mapEl.querySelector(".footprint-map-status");
+
+      if (statusEl) {
+        statusEl.textContent = message;
       }
     }
   })();
