@@ -175,6 +175,7 @@
               note: place.note || "",
               caption: place.caption || "",
               photo: place.photo || "",
+              media: normalizeMedia(place),
               country: country.name,
               region: region.name,
               color: region.color
@@ -185,6 +186,34 @@
     });
 
     return features;
+  }
+
+  function normalizeMedia(place) {
+    if (Array.isArray(place.media) && place.media.length) {
+      return place.media.map(function (item) {
+        return {
+          type: item.type || getMediaType(item.src),
+          src: item.src || "",
+          caption: item.caption || place.caption || ""
+        };
+      });
+    }
+
+    if (place.photo) {
+      return [
+        {
+          type: "image",
+          src: place.photo,
+          caption: place.caption || ""
+        }
+      ];
+    }
+
+    return [];
+  }
+
+  function getMediaType(src) {
+    return /\.(mp4|webm|ogg|mov)$/i.test(src || "") ? "video" : "image";
   }
 
   function getBounds(features) {
@@ -349,6 +378,7 @@
     }
 
     var image = modal.querySelector("[data-photo-image]");
+    var video = modal.querySelector("[data-photo-video]");
     var placeholder = modal.querySelector("[data-photo-placeholder]");
     var placeholderCity = modal.querySelector("[data-photo-placeholder-city]");
     var placeholderPath = modal.querySelector("[data-photo-placeholder-path]");
@@ -360,41 +390,42 @@
     var closeButton = modal.querySelector("[data-photo-close]");
     var prevButton = modal.querySelector("[data-photo-prev]");
     var nextButton = modal.querySelector("[data-photo-next]");
-    var activeIndex = 0;
+    var activePlaceIndex = 0;
+    var activeMediaIndex = 0;
 
-    function show(index) {
-      var feature = features[index];
+    function show(placeIndex, mediaIndex) {
+      var feature = features[placeIndex];
 
       if (!feature) {
         return;
       }
 
-      activeIndex = index;
+      var media = feature.properties.media || [];
+      var item = media[mediaIndex] || media[0] || {
+        type: "image",
+        src: feature.properties.photo || "",
+        caption: feature.properties.caption || ""
+      };
+
+      activePlaceIndex = placeIndex;
+      activeMediaIndex = mediaIndex >= 0 && mediaIndex < media.length ? mediaIndex : 0;
       setActivePlace(feature.properties.name);
 
       title.textContent = feature.properties.name;
-      caption.textContent = feature.properties.caption || "";
+      caption.textContent = item.caption || feature.properties.caption || "";
       note.textContent = feature.properties.note || "";
       country.textContent = feature.properties.country;
-      count.textContent = activeIndex + 1 + " / " + features.length;
+      count.textContent = getMediaCountText(media);
 
-      image.alt = feature.properties.name + " travel photo";
-      image.hidden = false;
+      resetMedia(image, video, placeholder);
       placeholder.hidden = true;
       placeholderCity.textContent = "";
       placeholderPath.textContent = "";
 
-      image.onerror = function () {
-        image.hidden = true;
-        placeholder.hidden = false;
-        placeholderCity.textContent = feature.properties.name;
-        placeholderPath.textContent = feature.properties.photo || "Photo path is empty.";
-      };
-
-      image.src = feature.properties.photo || "";
-
-      if (!feature.properties.photo) {
-        image.onerror();
+      if (item.type === "video") {
+        showVideo(video, image, placeholder, feature, item);
+      } else {
+        showImage(image, video, placeholder, feature, item);
       }
     }
 
@@ -403,7 +434,7 @@
         return feature.properties.name === placeName;
       });
 
-      show(index === -1 ? 0 : index);
+      show(index === -1 ? 0 : index, 0);
       modal.hidden = false;
       document.body.classList.add("is-photo-modal-open");
       modal.scrollTop = 0;
@@ -413,15 +444,51 @@
     function close() {
       modal.hidden = true;
       document.body.classList.remove("is-photo-modal-open");
+      video.pause();
+      video.removeAttribute("src");
+      video.load();
       setActivePlace("");
     }
 
     function showPrevious() {
-      show((activeIndex - 1 + features.length) % features.length);
+      var previous = getAdjacentMedia(-1);
+      show(previous.placeIndex, previous.mediaIndex);
     }
 
     function showNext() {
-      show((activeIndex + 1) % features.length);
+      var next = getAdjacentMedia(1);
+      show(next.placeIndex, next.mediaIndex);
+    }
+
+    function getAdjacentMedia(direction) {
+      var feature = features[activePlaceIndex];
+      var mediaLength = getMediaLength(feature);
+      var nextMediaIndex = activeMediaIndex + direction;
+
+      if (nextMediaIndex >= 0 && nextMediaIndex < mediaLength) {
+        return {
+          placeIndex: activePlaceIndex,
+          mediaIndex: nextMediaIndex
+        };
+      }
+
+      var nextPlaceIndex = (activePlaceIndex + direction + features.length) % features.length;
+      var nextMediaLength = getMediaLength(features[nextPlaceIndex]);
+
+      return {
+        placeIndex: nextPlaceIndex,
+        mediaIndex: direction > 0 ? 0 : nextMediaLength - 1
+      };
+    }
+
+    function getMediaCountText(media) {
+      var mediaLength = media && media.length ? media.length : 1;
+
+      if (mediaLength > 1) {
+        return activeMediaIndex + 1 + " / " + mediaLength;
+      }
+
+      return activePlaceIndex + 1 + " / " + features.length;
     }
 
     closeButton.addEventListener("click", close);
@@ -451,6 +518,64 @@
     return {
       open: open
     };
+  }
+
+  function showImage(image, video, placeholder, feature, item) {
+    image.alt = feature.properties.name + " travel photo";
+    image.hidden = false;
+    video.hidden = true;
+    video.pause();
+    video.removeAttribute("src");
+    video.load();
+
+    image.onerror = function () {
+      showMissingMedia(image, video, placeholder, feature, item);
+    };
+
+    image.src = item.src || "";
+
+    if (!item.src) {
+      image.onerror();
+    }
+  }
+
+  function showVideo(video, image, placeholder, feature, item) {
+    image.hidden = true;
+    image.removeAttribute("src");
+    video.hidden = false;
+    video.onerror = function () {
+      showMissingMedia(image, video, placeholder, feature, item);
+    };
+    video.src = item.src || "";
+    video.load();
+
+    if (!item.src) {
+      video.onerror();
+    }
+  }
+
+  function showMissingMedia(image, video, placeholder, feature, item) {
+    image.hidden = true;
+    video.hidden = true;
+    video.pause();
+    placeholder.hidden = false;
+    placeholder.querySelector("[data-photo-placeholder-city]").textContent =
+      feature.properties.name;
+    placeholder.querySelector("[data-photo-placeholder-path]").textContent =
+      item.src || "Media path is empty.";
+  }
+
+  function resetMedia(image, video, placeholder) {
+    image.onerror = null;
+    video.onerror = null;
+    image.hidden = true;
+    video.hidden = true;
+    placeholder.hidden = true;
+  }
+
+  function getMediaLength(feature) {
+    var media = feature && feature.properties.media;
+    return media && media.length ? media.length : 1;
   }
 
   function toggleFullscreen(shell, map) {

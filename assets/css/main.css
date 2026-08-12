@@ -550,7 +550,8 @@ a:focus {
   overflow: hidden;
 }
 
-.footprint-photo-stage img {
+.footprint-photo-stage img,
+.footprint-photo-stage video {
   display: block;
   width: auto;
   height: auto;
@@ -560,6 +561,7 @@ a:focus {
 }
 
 .footprint-photo-stage img[hidden],
+.footprint-photo-stage video[hidden],
 .footprint-photo-placeholder[hidden] {
   display: none;
 }
@@ -753,7 +755,8 @@ a:focus {
     min-height: 0;
   }
 
-  .footprint-photo-stage img {
+  .footprint-photo-stage img,
+  .footprint-photo-stage video {
     max-height: calc(100vh - 190px);
   }
 
