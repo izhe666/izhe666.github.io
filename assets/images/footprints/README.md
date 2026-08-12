@@ -5,6 +5,7 @@ Place your travel photos in this folder with these names:
 - `shanghai.jpg`
 - `chengdu.jpg`
 - `chongqing.jpg`
+- `changsha.jpg`
 - `hangzhou.jpg`
 - `guilin.jpg`
 - `nanning.jpg`

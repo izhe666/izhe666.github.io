@@ -1,14 +1,14 @@
 summary:
   countries: 1
-  places: 8
+  places: 9
 
 regions:
   - name: "亚洲"
     color: "#2563eb"
-    places_count: 8
+    places_count: 9
     countries:
       - name: "中国"
-        meta: "8 城市 / 地点"
+        meta: "9 城市 / 地点"
         places:
           - name: "三亚"
             lat: 18.2528
@@ -40,6 +40,12 @@ regions:
             note: "重庆"
             caption: "山城、江岸和层层叠叠的灯火。"
             photo: "/assets/images/footprints/chongqing.jpg"
+          - name: "长沙"
+            lat: 28.2282
+            lng: 112.9388
+            note: "湖南"
+            caption: "湘江、橘子洲和热烈的城市烟火。"
+            photo: "/assets/images/footprints/changsha.jpg"
           - name: "杭州"
             lat: 30.2741
             lng: 120.1551
