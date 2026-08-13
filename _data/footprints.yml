@@ -14,49 +14,55 @@ regions:
             lat: 18.2528
             lng: 109.5119
             note: "海南"
-            caption: "海风、椰影和南方的蓝色假期。"
+            caption: "心心念念的三亚，希望看到真实的大海--2026.8.2"
             media:
               - type: "image"
-                src: "/assets/images/footprints/sanya.jpg"
+                src: "/assets/images/footprints/sanya-1.jpg"
               - type: "image"
-                src: "/assets/images/footprints/sanya2.jpg"
+                src: "/assets/images/footprints/sanya-2.jpg"
           - name: "厦门"
             lat: 24.4798
             lng: 118.0894
             note: "福建"
-            caption: "海岸线、校园和慢下来的城市节奏。"
+            caption: "过年期间带老爸老妈来厦大参观--2026.2.20"
             media:
               - type: "image"
-                src: "/assets/images/footprints/xiamen.jpg"
+                src: "/assets/images/footprints/xiamen-1.png"
+              - type: "image"
+                src: "/assets/images/footprints/xiamen-2.png"
           - name: "上海"
             lat: 31.2304
             lng: 121.4737
             note: "上海"
-            caption: "高楼、江风和夜色里的城市轮廓。"
+            caption: "高二第一次来上海，感受大都市的繁华与现代，同时去了迪士尼--2019.7.20"
             media:
               - type: "image"
-                src: "/assets/images/footprints/shanghai.png"
+                src: "/assets/images/footprints/shanghai-1.png"
+              - type: "image"
+                src: "/assets/images/footprints/shanghai-2.png"
           - name: "成都"
             lat: 30.5728
             lng: 104.0668
             note: "四川"
-            caption: "烟火气、街巷和悠闲的生活感。"
+            caption: "参加电科夏令营，同时川大老哥带我逛一下IFS--2026.9.21"
             media:
               - type: "image"
-                src: "/assets/images/footprints/chengdu.jpg"
+                src: "/assets/images/footprints/chengdu.png"
           - name: "重庆"
             lat: 29.5630
             lng: 106.5516
             note: "重庆"
-            caption: "山城、江岸和层层叠叠的灯火。"
+            caption: "夏令营结束顺路去重庆，高中同学带这夜游重大--2026.9.23"
             media:
               - type: "image"
-                src: "/assets/images/footprints/chongqing.jpg"
+                src: "/assets/images/footprints/chongqing-1.png"
+              - type: "image"
+                src: "/assets/images/footprints/chongqing-2.png"
           - name: "长沙"
             lat: 28.2282
             lng: 112.9388
             note: "湖南"
-            caption: "湘江、橘子洲和热烈的城市烟火。"
+            caption: "大二暑假去长沙，感受湘江的魅力--2022.8.15"
             media:
               - type: "image"
                 src: "/assets/images/footprints/changsha.png"
@@ -64,7 +70,7 @@ regions:
             lat: 30.2741
             lng: 120.1551
             note: "浙江"
-            caption: "湖光、树影和温柔的江南气息。"
+            caption: "高二去杭州参观浙大，顺便去西湖看看--2019.7.21"
             media:
               - type: "image"
                 src: "/assets/images/footprints/hangzhou.png"
@@ -72,15 +78,15 @@ regions:
             lat: 25.2736
             lng: 110.2900
             note: "广西"
-            caption: "山水之间，一眼就是画。"
+            caption: "桂林廿四田游玩--2026.7.19"
             media:
               - type: "image"
-                src: "/assets/images/footprints/guilin.jpg"
+                src: "/assets/images/footprints/guilin.png"
           - name: "南宁"
             lat: 22.8170
             lng: 108.3669
             note: "广西"
-            caption: "2026年毕业西大合照"
+            caption: "大四没课出去闲逛亭子码头--2025.11.3"
             media:
               - type: "image"
                 src: "/assets/images/footprints/nanning.png"
@@ -88,11 +94,8 @@ regions:
             lat: 22.5431
             lng: 114.0579
             note: "广东"
-            caption: "山海之间的现代城市。"
+            caption: "参加深大夏令营--2025.7.20"
             media:
               - type: "image"
                 src: "/assets/images/footprints/shenzhen-1.jpg"
               - type: "image"
-                src: "/assets/images/footprints/shenzhen-2.jpg"
-              - type: "video"
-                src: "/assets/images/footprints/shenzhen-video.mp4"
