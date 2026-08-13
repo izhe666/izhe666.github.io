@@ -12,7 +12,7 @@ Informatics, **Xiamen University**. My research interests include **Artificial
 Intelligence** and **Embodied Intelligent Navigation**.
 </div>
 
-<div class="language-copy" data-language-copy="zh" markdown="1">
+<div class="language-copy" data-language-copy="zh" hidden markdown="1">
 我本科毕业于**广西大学计算机与电子信息学院计算机科学与技术专业**，目前在
 **厦门大学信息学院**攻读**计算机技术**硕士学位。我的研究兴趣包括
 **人工智能**和**具身智能导航**。

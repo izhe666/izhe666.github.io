@@ -7,7 +7,7 @@
     <title>
       {% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}
     </title>
-    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/main.css?v=20260814-2' | relative_url }}" />
     {% if page.footprint_map %}
       <link
         rel="stylesheet"
@@ -41,6 +41,9 @@
           document.querySelectorAll("[data-en][data-zh]").forEach(function (element) {
             element.textContent = element.dataset[language];
           });
+          document.querySelectorAll("[data-language-copy]").forEach(function (element) {
+            element.hidden = element.dataset.languageCopy !== language;
+          });
           if (languageButton) {
             languageButton.setAttribute("aria-pressed", language === "zh" ? "true" : "false");
             languageButton.setAttribute("aria-label", language === "zh" ? "Switch to English" : "切换为中文");
@@ -62,7 +65,7 @@
         src="https://cdn.jsdelivr.net/npm/maplibre-gl@3.6.2/dist/maplibre-gl.js"
         defer
       ></script>
-      <script src="{{ '/assets/js/footpoints.js' | relative_url }}" defer></script>
+      <script src="{{ '/assets/js/footpoints.js?v=20260814-2' | relative_url }}" defer></script>
     {% endif %}
   </body>
 </html>

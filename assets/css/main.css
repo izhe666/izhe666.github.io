@@ -259,6 +259,10 @@ a:focus {
   display: none;
 }
 
+[data-language-copy][hidden] {
+  display: none !important;
+}
+
 :root[data-language="zh"] [data-language-copy="en"] {
   display: none;
 }

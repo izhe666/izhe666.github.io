@@ -6,7 +6,7 @@ layout: default
 <header class="profile-card">
   <img class="avatar" src="{{ profile.avatar | relative_url }}" alt="Portrait of {{ profile.name }}" />
   <div class="profile-card-main">
-    <h1 data-en="{{ profile.name }}" data-zh="{{ profile.name_zh }} {{ profile.name }}">{{ profile.name }}</h1>
+    <h1 data-en="{{ profile.name }}" data-zh="{{ profile.name_zh }}">{{ profile.name }}</h1>
     <nav class="profile-links" aria-label="Profile links">
       <a href="{{ profile.cv }}"><span aria-hidden="true">CV</span> <i data-en="Curriculum Vitae" data-zh="个人简历">Curriculum Vitae</i></a>
       <a href="mailto:{{ profile.email }}"><span aria-hidden="true">@</span> {{ profile.email }}</a>
