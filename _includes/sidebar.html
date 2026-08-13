@@ -1,15 +1,25 @@
 {% assign profile = site.data.profile %}
-<header class="site-header">
-  <div class="header-inner">
-    <a class="site-name" href="{{ '/' | relative_url }}">{{ profile.name_zh }} <span>{{ profile.name }}</span></a>
-    <nav class="site-nav" aria-label="Site navigation">
-      <a{% if page.url == '/' %} class="is-active"{% endif %} href="{{ '/' | relative_url }}">Home</a>
-      <a{% if page.url contains '/publications' %} class="is-active"{% endif %} href="{{ '/publications/' | relative_url }}">Publications</a>
-      <a href="{{ '/#footprints-title' | relative_url }}">Footprints</a>
-      <a href="{{ profile.cv }}">CV</a>
-      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" title="Switch theme">
-        <span class="theme-sun" aria-hidden="true">☼</span><span class="theme-moon" aria-hidden="true">☾</span>
-      </button>
-    </nav>
-  </div>
-</header>
+<aside class="sidebar" aria-label="Profile">
+  <img class="avatar" src="{{ profile.avatar | relative_url }}" alt="Portrait of {{ profile.name }}" />
+
+  <section class="profile-block">
+    <h2>{{ profile.name }}</h2>
+    <p>{{ profile.name_zh }}</p>
+    <p>{{ profile.title }}</p>
+    <p>{{ profile.affiliation }}</p>
+  </section>
+
+  <nav class="link-list" aria-label="Contact links">
+    <a href="mailto:{{ profile.email }}"><span>@</span>Email</a>
+    <a href="{{ profile.github }}"><span>GH</span>GitHub</a>
+    <a href="{{ profile.google_scholar }}"><span>GS</span>Google Scholar</a>
+    <a href="{{ profile.orcid }}"><span>ID</span>ORCID</a>
+    <a href="{{ profile.cv }}"><span>CV</span>CV</a>
+  </nav>
+
+  <nav class="site-nav" aria-label="Site navigation">
+    {% for item in site.data.navigation %}
+      <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+    {% endfor %}
+  </nav>
+</aside>
