@@ -1,14 +1,14 @@
 summary:
   countries: 1
-  places: 10
+  places: 11
 
 regions:
   - name: "亚洲"
     color: "#2563eb"
-    places_count: 10
+    places_count: 11
     countries:
       - name: "中国"
-        meta: "10 城市 / 地点"
+        meta: "11 城市 / 地点"
         places:
           - name: "三亚"
             lat: 18.2528
@@ -47,7 +47,9 @@ regions:
             caption: "参加电科夏令营，同时川大老哥带我逛一下IFS--2026.9.21"
             media:
               - type: "image"
-                src: "/assets/images/footprints/chengdu.png"
+                src: "/assets/images/footprints/chengdu-1.png"
+              - type: "image"
+                src: "/assets/images/footprints/chengdu-2.png"
           - name: "重庆"
             lat: 29.5630
             lng: 106.5516
@@ -90,12 +92,18 @@ regions:
             media:
               - type: "image"
                 src: "/assets/images/footprints/nanning.png"
+          - name: "崇左"
+            lat: 22.3773
+            lng: 107.3647
+            note: "广西"
+            caption: "广西崇左"
           - name: "深圳"
             lat: 22.5431
             lng: 114.0579
             note: "广东"
-            caption: "参加深大夏令营--2025.7.20"
+            caption: "参加深大夏令营、夜晚去逛深圳湾公园--2025.7.20"
             media:
               - type: "image"
-                src: "/assets/images/footprints/shenzhen-1.jpg"
+                src: "/assets/images/footprints/shenzhen-1.png"
               - type: "image"
+                src: "/assets/images/footprints/shenzhen-2.png"
