@@ -96,7 +96,12 @@ regions:
             lat: 22.3773
             lng: 107.3647
             note: "广西"
-            caption: "广西崇左"
+            caption: "大二期末考完试去崇左爬剑龙山--2024.7.11"
+            media:
+              - type: "image"
+                src: "/assets/images/footprints/chongzuo-1.png"            
+              - type: "image"
+                src: "/assets/images/footprints/chongzuo-2.png"   
           - name: "深圳"
             lat: 22.5431
             lng: 114.0579
