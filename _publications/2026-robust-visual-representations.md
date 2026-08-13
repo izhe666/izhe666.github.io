@@ -1,5 +1,5 @@
 ---
-title: "Learning Robust Visual Representations for Open-World Recognition"
+title: "Waitting..."
 authors: "Your Name, Collaborator A, Collaborator B"
 venue: "Conference Name"
 year: 2026
