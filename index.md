@@ -4,7 +4,7 @@ title: Home
 footprint_map: true
 ---
 
-🤡 I received my bachelor's degree in **Computer Science and Technology** from the
+I received my bachelor's degree in **Computer Science and Technology** from the
 School of Computer, Electronics and Information at **Guangxi University**. I am
 currently pursuing a master's degree in **Computer Technology** at the School of
 Informatics, **Xiamen University**. My research interests include **Artificial
@@ -31,4 +31,3 @@ full publication list.
 
 
 {% include footprint-map.html %}
-

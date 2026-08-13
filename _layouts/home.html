@@ -2,9 +2,23 @@
 layout: default
 ---
 
-<header class="intro">
-  <h1>{{ site.data.profile.name }} <span>({{ site.data.profile.name_zh }})</span></h1>
-  {{ page.intro | markdownify }}
+{% assign profile = site.data.profile %}
+<header class="profile-card">
+  <img class="avatar" src="{{ profile.avatar | relative_url }}" alt="Portrait of {{ profile.name }}" />
+  <div class="profile-card-main">
+    <h1>{{ profile.name_zh }} <span>{{ profile.name }}</span></h1>
+    <nav class="profile-links" aria-label="Profile links">
+      <a href="{{ profile.cv }}"><span aria-hidden="true">CV</span> Curriculum Vitae</a>
+      <a href="mailto:{{ profile.email }}"><span aria-hidden="true">@</span> {{ profile.email }}</a>
+      <a href="{{ profile.google_scholar }}"><span aria-hidden="true">GS</span> Google Scholar</a>
+      <a href="{{ profile.github }}"><span aria-hidden="true">GH</span> GitHub</a>
+    </nav>
+    <div class="profile-facts">
+      <strong>{{ profile.title }}</strong>
+      <span>{{ profile.affiliation }}</span>
+      <span>Artificial Intelligence · Embodied Intelligent Navigation</span>
+    </div>
+  </div>
 </header>
 
-{{ content }}
+<div class="home-content">{{ content }}</div>

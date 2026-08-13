@@ -16,12 +16,24 @@
     {% endif %}
   </head>
   <body>
+    {% include sidebar.html %}
     <main class="site-shell">
-      {% include sidebar.html %}
-      <section class="content">
-        {{ content }}
-      </section>
+      <section class="content">{{ content }}</section>
     </main>
+    <script>
+      (function () {
+        var button = document.querySelector("[data-theme-toggle]");
+        var stored = localStorage.getItem("site-theme");
+        if (stored) document.documentElement.dataset.theme = stored;
+        if (!button) return;
+        button.addEventListener("click", function () {
+          var next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+          document.documentElement.dataset.theme = next;
+          localStorage.setItem("site-theme", next);
+          button.setAttribute("aria-label", next === "dark" ? "Use light theme" : "Use dark theme");
+        });
+      })();
+    </script>
     {% if page.footprint_map %}
       <script
         src="https://cdn.jsdelivr.net/npm/maplibre-gl@3.6.2/dist/maplibre-gl.js"
