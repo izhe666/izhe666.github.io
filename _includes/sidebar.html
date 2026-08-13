@@ -1,17 +1,15 @@
 {% assign profile = site.data.profile %}
 <header class="site-header">
   <div class="header-inner">
-    <div class="site-identity">
-      <a class="site-name" href="{{ '/' | relative_url }}">{{ profile.name_zh }} <span>{{ profile.name }}</span></a>
-      <button class="language-toggle" type="button" data-language-toggle aria-label="切换为中文" aria-pressed="false" title="中英文切换">
-        <span aria-hidden="true">文A</span><strong data-language-label>EN</strong>
-      </button>
-    </div>
+    <a class="site-name" href="{{ '/' | relative_url }}" data-en="{{ profile.name }}" data-zh="{{ profile.name_zh }}">{{ profile.name }}</a>
     <nav class="site-nav" aria-label="Site navigation">
       <a{% if page.url == '/' %} class="is-active"{% endif %} href="{{ '/' | relative_url }}" data-en="Home" data-zh="首页">Home</a>
       <a{% if page.url contains '/publications' %} class="is-active"{% endif %} href="{{ '/publications/' | relative_url }}" data-en="Publications" data-zh="论文">Publications</a>
       <a href="{{ '/#footprints-title' | relative_url }}" data-en="Footprints" data-zh="足迹">Footprints</a>
       <a href="{{ profile.cv }}">CV</a>
+      <button class="language-toggle" type="button" data-language-toggle aria-label="切换为中文" aria-pressed="false" title="中英文切换">
+        <span class="language-icon" aria-hidden="true" data-language-icon>文A</span>
+      </button>
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" title="Switch theme">
         <span class="theme-sun" aria-hidden="true">☼</span><span class="theme-moon" aria-hidden="true">☾</span>
       </button>

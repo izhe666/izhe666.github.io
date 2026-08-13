@@ -2,6 +2,32 @@
   var POINT_SOURCE_ID = "footprint-points";
   var POINT_LAYER_ID = "footprint-point-circles";
   var POINT_HALO_LAYER_ID = "footprint-point-halos";
+  var ENGLISH_TEXT = {
+    "亚洲": "Asia", "中国": "China", "海南": "Hainan", "福建": "Fujian",
+    "上海": "Shanghai", "四川": "Sichuan", "重庆": "Chongqing", "湖南": "Hunan",
+    "浙江": "Zhejiang", "广西": "Guangxi", "广东": "Guangdong", "三亚": "Sanya",
+    "厦门": "Xiamen", "成都": "Chengdu", "长沙": "Changsha", "杭州": "Hangzhou",
+    "桂林": "Guilin", "南宁": "Nanning", "崇左": "Chongzuo", "深圳": "Shenzhen",
+    "心心念念的三亚，希望看到真实的大海--2026.8.2": "A long-awaited trip to Sanya to finally see the real ocean -- 2026.8.2",
+    "过年期间带老爸老妈来厦大参观--2026.2.20": "Visiting Xiamen University with my parents during the Spring Festival -- 2026.2.20",
+    "高二第一次来上海，感受大都市的繁华与现代，同时去了迪士尼--2019.7.20": "My first trip to Shanghai in high school, experiencing the modern metropolis and visiting Disneyland -- 2019.7.20",
+    "参加电科夏令营，同时川大老哥带我逛一下IFS--2026.9.21": "Attending a summer camp and visiting IFS with a friend from Sichuan University -- 2026.9.21",
+    "夏令营结束顺路去重庆，高中同学带这夜游重大--2026.9.23": "Stopping in Chongqing after summer camp and visiting Chongqing University at night with a high-school friend -- 2026.9.23",
+    "大二暑假去长沙，感受湘江的魅力--2022.8.15": "A summer trip to Changsha to experience the Xiang River -- 2022.8.15",
+    "高二去杭州参观浙大，顺便去西湖看看--2019.7.21": "Visiting Zhejiang University and West Lake during high school -- 2019.7.21",
+    "桂林廿四田游玩--2026.7.19": "A trip to Nianshitian in Guilin -- 2026.7.19",
+    "大四没课出去闲逛亭子码头--2025.11.3": "An afternoon walk around Tingzi Wharf during my senior year -- 2025.11.3",
+    "大二期末考完试去崇左爬剑龙山--2024.7.11": "Climbing Jianlong Mountain in Chongzuo after sophomore final exams -- 2024.7.11",
+    "参加深大夏令营、夜晚去逛深圳湾公园--2025.7.20": "Attending a summer camp at Shenzhen University and visiting Shenzhen Bay Park at night -- 2025.7.20"
+  };
+
+  function currentLanguage() {
+    return document.documentElement.dataset.language === "zh" ? "zh" : "en";
+  }
+
+  function localize(value) {
+    return currentLanguage() === "zh" ? value : (ENGLISH_TEXT[value] || value);
+  }
 
   function ready(fn) {
     if (document.readyState === "loading") {
@@ -93,6 +119,8 @@
 
     var initialBounds = getBounds(features);
     var photoModal = createPhotoModal(features);
+    localizeFootprintList();
+    document.addEventListener("site-language-change", localizeFootprintList);
 
     map.on("load", function () {
       map.addSource(POINT_SOURCE_ID, {
@@ -411,10 +439,10 @@
       activeMediaIndex = mediaIndex >= 0 && mediaIndex < media.length ? mediaIndex : 0;
       setActivePlace(feature.properties.name);
 
-      title.textContent = feature.properties.name;
-      caption.textContent = item.caption || feature.properties.caption || "";
-      note.textContent = feature.properties.note || "";
-      country.textContent = feature.properties.country;
+      title.textContent = localize(feature.properties.name);
+      caption.textContent = localize(item.caption || feature.properties.caption || "");
+      note.textContent = localize(feature.properties.note || "");
+      country.textContent = localize(feature.properties.country);
       count.textContent = getMediaCountText(media);
 
       resetMedia(image, video, placeholder);
@@ -521,7 +549,7 @@
   }
 
   function showImage(image, video, placeholder, feature, item) {
-    image.alt = feature.properties.name + " travel photo";
+    image.alt = localize(feature.properties.name) + " travel photo";
     image.hidden = false;
     video.hidden = true;
     video.pause();
@@ -560,7 +588,7 @@
     video.pause();
     placeholder.hidden = false;
     placeholder.querySelector("[data-photo-placeholder-city]").textContent =
-      feature.properties.name;
+      localize(feature.properties.name);
     placeholder.querySelector("[data-photo-placeholder-path]").textContent =
       item.src || "Media path is empty.";
   }
@@ -601,16 +629,38 @@
     return [
       '<div class="footprint-popup">',
       "<strong>",
-      escapeHtml(properties.name),
+      escapeHtml(localize(properties.name)),
       "</strong>",
       "<span>",
-      escapeHtml(properties.country),
+      escapeHtml(localize(properties.country)),
       "</span>",
       "<p>",
-      escapeHtml(properties.note),
+      escapeHtml(localize(properties.note)),
       "</p>",
       "</div>"
     ].join("");
+  }
+
+  function localizeFootprintList() {
+    document.querySelectorAll("[data-country-name]").forEach(function (button) {
+      var name = button.dataset.countryName;
+      var strong = button.querySelector("strong");
+      var meta = button.querySelector("span");
+      if (strong) strong.textContent = localize(name);
+      if (meta) {
+        if (!meta.dataset.zh) meta.dataset.zh = meta.textContent.trim();
+        meta.textContent = currentLanguage() === "zh" ? meta.dataset.zh : "11 Cities / Places";
+      }
+    });
+
+    document.querySelectorAll("[data-place-name]").forEach(function (button) {
+      button.textContent = localize(button.dataset.placeName);
+    });
+
+    document.querySelectorAll(".footprint-region-title h3").forEach(function (heading) {
+      if (!heading.dataset.zh) heading.dataset.zh = heading.textContent.trim();
+      heading.textContent = currentLanguage() === "zh" ? heading.dataset.zh : localize(heading.dataset.zh);
+    });
   }
 
   function escapeHtml(value) {

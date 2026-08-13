@@ -8,9 +8,9 @@
     <p class="authors">{{ pub.authors }}</p>
     <p class="venue">{{ pub.venue }}, {{ pub.year }}</p>
     <p class="pub-links">
-      {% if pub.paper %}<a href="{{ pub.paper }}">Paper</a>{% endif %}
-      {% if pub.code %}<a href="{{ pub.code }}">Code</a>{% endif %}
-      {% if pub.project %}<a href="{{ pub.project }}">Project</a>{% endif %}
+      {% if pub.paper %}<a href="{{ pub.paper }}" data-en="Paper" data-zh="论文">Paper</a>{% endif %}
+      {% if pub.code %}<a href="{{ pub.code }}" data-en="Code" data-zh="代码">Code</a>{% endif %}
+      {% if pub.project %}<a href="{{ pub.project }}" data-en="Project" data-zh="项目">Project</a>{% endif %}
     </p>
   </div>
 </article>

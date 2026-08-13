@@ -7,11 +7,11 @@
     </div>
     <div class="footprint-stats" aria-label="Travel summary">
       <div class="footprint-stat">
-        <span>Countries</span>
+        <span data-en="Countries" data-zh="国家">Countries</span>
         <strong>{{ footprints.summary.countries }}</strong>
       </div>
       <div class="footprint-stat">
-        <span>Cities / Places</span>
+        <span data-en="Cities / Places" data-zh="城市 / 地点">Cities / Places</span>
         <strong>{{ footprints.summary.places }}</strong>
       </div>
     </div>
@@ -19,7 +19,7 @@
 
   <div class="footprint-map-shell" data-footprint-map-shell>
     <div class="footprint-map" data-footprint-map>
-      <p class="footprint-map-status">Loading map...</p>
+      <p class="footprint-map-status" data-en="Loading map..." data-zh="地图加载中...">Loading map...</p>
     </div>
     <div class="footprint-map-controls" aria-label="Map controls">
       <button type="button" data-map-action="zoom-in" aria-label="Zoom in">
@@ -42,7 +42,7 @@
       </button>
     </div>
   </div>
-  <p class="footprint-hint">Click a marker to see the city and note.</p>
+  <p class="footprint-hint" data-en="Click a marker to see the city and note." data-zh="点击地图标记查看城市和记录。">Click a marker to see the city and note.</p>
 
   <div class="footprint-regions">
     {% for region in footprints.regions %}

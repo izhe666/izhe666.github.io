@@ -44,12 +44,12 @@
           if (languageButton) {
             languageButton.setAttribute("aria-pressed", language === "zh" ? "true" : "false");
             languageButton.setAttribute("aria-label", language === "zh" ? "Switch to English" : "切换为中文");
-            languageButton.querySelector("[data-language-label]").textContent = language === "zh" ? "中" : "EN";
+            languageButton.querySelector("[data-language-icon]").textContent = language === "zh" ? "A中" : "文A";
           }
-          localStorage.setItem("site-language", language);
+          document.dispatchEvent(new CustomEvent("site-language-change", { detail: { language: language } }));
         }
 
-        setLanguage(localStorage.getItem("site-language") === "zh" ? "zh" : "en");
+        setLanguage("en");
         if (languageButton) {
           languageButton.addEventListener("click", function () {
             setLanguage(document.documentElement.dataset.language === "zh" ? "en" : "zh");

@@ -34,7 +34,7 @@ Intelligence** and **Embodied Intelligent Navigation**.
 
 ## ✨<span data-en="Hobby" data-zh="爱好">Hobby</span>
 
-:basketball: Basketball,  :video_game: LOL,   :beers:Mixology, :bike: Cycling， :guitar: Guitar(weak), :headphones:Music，:swimmer:Swimming，:muscle:Keep Fit​
+<span data-en="🏀 Basketball · 🎮 LOL · 🍸 Mixology · 🚴 Cycling · 🎸 Guitar · 🎧 Music · 🏊 Swimming · 💪 Fitness" data-zh="🏀 篮球 · 🎮 英雄联盟 · 🍸 调酒 · 🚴 骑行 · 🎸 吉他 · 🎧 音乐 · 🏊 游泳 · 💪 健身">🏀 Basketball · 🎮 LOL · 🍸 Mixology · 🚴 Cycling · 🎸 Guitar · 🎧 Music · 🏊 Swimming · 💪 Fitness</span>
 
 
 {% include footprint-map.html %}
