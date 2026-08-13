@@ -32,5 +32,3 @@ full publication list.
 
 {% include footprint-map.html %}
 
-:triangular_flag_on_post:
-
