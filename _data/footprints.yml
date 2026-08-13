@@ -17,9 +17,9 @@ regions:
             caption: "心心念念的三亚，希望看到真实的大海--2026.8.2"
             media:
               - type: "image"
-                src: "/assets/images/footprints/sanya-1.jpg"
+                src: "/assets/images/footprints/sanya-1.png"
               - type: "image"
-                src: "/assets/images/footprints/sanya-2.jpg"
+                src: "/assets/images/footprints/sanya-2.png"
           - name: "厦门"
             lat: 24.4798
             lng: 118.0894
