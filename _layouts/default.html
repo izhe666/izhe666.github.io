@@ -23,15 +23,38 @@
     <script>
       (function () {
         var button = document.querySelector("[data-theme-toggle]");
+        var languageButton = document.querySelector("[data-language-toggle]");
         var stored = localStorage.getItem("site-theme");
         if (stored) document.documentElement.dataset.theme = stored;
-        if (!button) return;
-        button.addEventListener("click", function () {
-          var next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-          document.documentElement.dataset.theme = next;
-          localStorage.setItem("site-theme", next);
-          button.setAttribute("aria-label", next === "dark" ? "Use light theme" : "Use dark theme");
-        });
+        if (button) {
+          button.addEventListener("click", function () {
+            var next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+            document.documentElement.dataset.theme = next;
+            localStorage.setItem("site-theme", next);
+            button.setAttribute("aria-label", next === "dark" ? "Use light theme" : "Use dark theme");
+          });
+        }
+
+        function setLanguage(language) {
+          document.documentElement.lang = language;
+          document.documentElement.dataset.language = language;
+          document.querySelectorAll("[data-en][data-zh]").forEach(function (element) {
+            element.textContent = element.dataset[language];
+          });
+          if (languageButton) {
+            languageButton.setAttribute("aria-pressed", language === "zh" ? "true" : "false");
+            languageButton.setAttribute("aria-label", language === "zh" ? "Switch to English" : "切换为中文");
+            languageButton.querySelector("[data-language-label]").textContent = language === "zh" ? "中" : "EN";
+          }
+          localStorage.setItem("site-language", language);
+        }
+
+        setLanguage(localStorage.getItem("site-language") === "zh" ? "zh" : "en");
+        if (languageButton) {
+          languageButton.addEventListener("click", function () {
+            setLanguage(document.documentElement.dataset.language === "zh" ? "en" : "zh");
+          });
+        }
       })();
     </script>
     {% if page.footprint_map %}

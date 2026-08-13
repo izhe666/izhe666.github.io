@@ -8,15 +8,15 @@ layout: default
   <div class="profile-card-main">
     <h1>{{ profile.name_zh }} <span>{{ profile.name }}</span></h1>
     <nav class="profile-links" aria-label="Profile links">
-      <a href="{{ profile.cv }}"><span aria-hidden="true">CV</span> Curriculum Vitae</a>
+      <a href="{{ profile.cv }}"><span aria-hidden="true">CV</span> <i data-en="Curriculum Vitae" data-zh="个人简历">Curriculum Vitae</i></a>
       <a href="mailto:{{ profile.email }}"><span aria-hidden="true">@</span> {{ profile.email }}</a>
       <a href="{{ profile.google_scholar }}"><span aria-hidden="true">GS</span> Google Scholar</a>
       <a href="{{ profile.github }}"><span aria-hidden="true">GH</span> GitHub</a>
     </nav>
     <div class="profile-facts">
-      <strong>{{ profile.title }}</strong>
-      <span>{{ profile.affiliation }}</span>
-      <span>Artificial Intelligence · Embodied Intelligent Navigation</span>
+      <strong data-en="Student / Researcher" data-zh="学生 / 研究者">{{ profile.title }}</strong>
+      <span data-en="Xiamen University" data-zh="厦门大学">{{ profile.affiliation }}</span>
+      <span data-en="Artificial Intelligence · Embodied Intelligent Navigation" data-zh="人工智能 · 具身智能导航">Artificial Intelligence · Embodied Intelligent Navigation</span>
     </div>
   </div>
 </header>
