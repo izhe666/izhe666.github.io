@@ -27,7 +27,10 @@ full publication list.
 
 ## ✨Hobby
 
-:basketball: Basketball,  :video_game: LOL,   :beers:mixology, :bike: cycling， :guitar: guitar(weak), :headphones:music，:swimmer:swimming 
+:basketball: Basketball,  :video_game: LOL,   :beers:Mixology, :bike: Cycling， :guitar: Guitar(weak), :headphones:Music，:swimmer:Swimming，:muscle:Keep Fit​
 
 
 {% include footprint-map.html %}
+
+:triangular_flag_on_post:
+
